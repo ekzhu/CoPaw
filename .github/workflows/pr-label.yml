@@ -18,10 +18,10 @@ jobs:
             const author = context.payload.pull_request.user.login;
 
             const { data: searchResult } = await github.rest.search.issuesAndPullRequests({
-              q: `repo:${context.repo.owner}/${context.repo.repo} type:pr author:${author}`,
+              q: `repo:${context.repo.owner}/${context.repo.repo} type:pr author:${author} is:closed`,
             });
 
-            const isFirstTime = searchResult.total_count <= 1;
+            const isFirstTime = searchResult.total_count === 0;
 
             if (isFirstTime) {
               await github.rest.issues.addLabels({
