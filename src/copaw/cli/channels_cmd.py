@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from types import SimpleNamespace
+from typing import Any
 
 import click
 
@@ -816,9 +817,9 @@ def _strip_ansi(s: str) -> str:
     return re.sub(r"\x1b\[[0-9;]*[a-zA-Z]", "", s)
 
 
-def _validate_channel(key: str, ch) -> list:
+def _validate_channel(key: str, ch: Any) -> list[str]:
     """Run static validation checks for a channel config. Returns warnings."""
-    warnings: list = []
+    warnings: list[str] = []
 
     if key == "imessage":
         import shutil
@@ -831,7 +832,8 @@ def _validate_channel(key: str, ch) -> list:
             )
 
         db_path = (
-            ch.get("db_path") if isinstance(ch, dict)
+            ch.get("db_path")
+            if isinstance(ch, dict)
             else getattr(ch, "db_path", None)
         )
         if db_path:

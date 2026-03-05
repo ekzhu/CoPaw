@@ -185,7 +185,10 @@ class IMessageChannel(BaseChannel):
                 "Grant Full Disk Access to your terminal app in "
                 "System Settings > Privacy & Security > Full Disk Access."
             )
-            logger.error("iMessage watcher failed to start: %s", self.last_error)
+            logger.error(
+                "iMessage watcher failed to start: %s",
+                self.last_error,
+            )
             return
         except OSError:
             if not db.exists():
@@ -196,7 +199,10 @@ class IMessageChannel(BaseChannel):
                 self.last_error = (
                     f"Cannot access iMessage database ({self.db_path})."
                 )
-            logger.error("iMessage watcher failed to start: %s", self.last_error)
+            logger.error(
+                "iMessage watcher failed to start: %s",
+                self.last_error,
+            )
             return
 
         try:
@@ -212,7 +218,10 @@ class IMessageChannel(BaseChannel):
             self.last_error = (
                 f"Cannot open iMessage database ({self.db_path}): {exc}"
             )
-            logger.error("iMessage watcher failed to start: %s", self.last_error)
+            logger.error(
+                "iMessage watcher failed to start: %s",
+                self.last_error,
+            )
             return
 
         self.last_error = None
