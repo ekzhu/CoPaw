@@ -819,7 +819,8 @@ def _strip_ansi(s: str) -> str:
         \x1B                      # ESC
         (?:
             \[ [0-?]* [ -/]* [@-~]     # CSI sequence
-          | \] [^\x1b\x07]* (?:\x07|\x1b\\)  # OSC sequence terminated by BEL or ST
+          # OSC sequence terminated by BEL or ST
+          | \] [^\x1b\x07]* (?:\x07|\x1b\\)
           | [@-Z\\-_]                  # 7-bit C1 escape (single-char)
         )
         """,
