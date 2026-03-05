@@ -809,6 +809,13 @@ def _channel_enabled(ch) -> bool:
     return False
 
 
+def _strip_ansi(s: str) -> str:
+    """Strip ANSI escape sequences from a string."""
+    import re
+
+    return re.sub(r"\x1b\[[0-9;]*[a-zA-Z]", "", s)
+
+
 def _validate_channel(key: str, ch) -> list:
     """Run static validation checks for a channel config. Returns warnings."""
     warnings: list = []
@@ -823,27 +830,29 @@ def _validate_channel(key: str, ch) -> list:
                 "Install with: brew install steipete/tap/imsg",
             )
 
-        db_path = getattr(ch, "db_path", None)
-        if isinstance(ch, dict):
-            db_path = ch.get("db_path")
+        db_path = (
+            ch.get("db_path") if isinstance(ch, dict)
+            else getattr(ch, "db_path", None)
+        )
         if db_path:
             expanded = os.path.expanduser(db_path)
+            safe_expanded = _strip_ansi(expanded)
             try:
                 os.stat(expanded)
             except PermissionError:
                 warnings.append(
-                    f"Cannot read iMessage database: {expanded}. "
+                    f"Cannot read iMessage database: {safe_expanded}. "
                     "Grant Full Disk Access to your terminal in "
                     "System Settings > Privacy & Security > Full Disk Access.",
                 )
             except FileNotFoundError:
                 warnings.append(
-                    f"iMessage database not found: {expanded}",
+                    f"iMessage database not found: {safe_expanded}",
                 )
             else:
                 if not os.access(expanded, os.R_OK):
                     warnings.append(
-                        f"Cannot read iMessage database: {expanded}. "
+                        f"Cannot read iMessage database: {safe_expanded}. "
                         "Grant Full Disk Access to your terminal in "
                         "System Settings > Privacy & Security > "
                         "Full Disk Access.",

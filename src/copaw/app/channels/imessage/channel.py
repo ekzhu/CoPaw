@@ -14,6 +14,7 @@ import base64
 import hashlib
 from pathlib import Path
 from typing import Any, Dict, Optional, List
+from urllib.parse import quote as urlquote
 
 from agentscope_runtime.engine.schemas.agent_schemas import (
     TextContent,
@@ -199,7 +200,10 @@ class IMessageChannel(BaseChannel):
             return
 
         try:
-            conn = sqlite3.connect(f"file:{self.db_path}?mode=ro", uri=True)
+            conn = sqlite3.connect(
+                f"file:{urlquote(self.db_path, safe='/')}?mode=ro",
+                uri=True,
+            )
             conn.row_factory = sqlite3.Row
             last_rowid = conn.execute(
                 "SELECT IFNULL(MAX(ROWID),0) FROM message",
