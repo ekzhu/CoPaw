@@ -828,14 +828,26 @@ def _validate_channel(key: str, ch) -> list:
             db_path = ch.get("db_path")
         if db_path:
             expanded = os.path.expanduser(db_path)
-            if not os.path.exists(expanded):
-                warnings.append(f"iMessage database not found: {expanded}")
-            elif not os.access(expanded, os.R_OK):
+            try:
+                os.stat(expanded)
+            except PermissionError:
                 warnings.append(
                     f"Cannot read iMessage database: {expanded}. "
                     "Grant Full Disk Access to your terminal in "
                     "System Settings > Privacy & Security > Full Disk Access.",
                 )
+            except FileNotFoundError:
+                warnings.append(
+                    f"iMessage database not found: {expanded}",
+                )
+            else:
+                if not os.access(expanded, os.R_OK):
+                    warnings.append(
+                        f"Cannot read iMessage database: {expanded}. "
+                        "Grant Full Disk Access to your terminal in "
+                        "System Settings > Privacy & Security > "
+                        "Full Disk Access.",
+                    )
 
     return warnings
 
