@@ -328,6 +328,7 @@ class ChannelManager:
         )
         for g in snapshot:
             try:
+                g.last_error = None
                 await g.start()
             except Exception as exc:
                 logger.exception(f"failed to start channels={g.channel}")
