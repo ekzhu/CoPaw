@@ -53,9 +53,7 @@ function VoiceTranscriptionPage() {
     <div className={styles.page}>
       <div className={styles.header}>
         <div>
-          <h1 className={styles.title}>
-            {t("voiceTranscription.title")}
-          </h1>
+          <h1 className={styles.title}>{t("voiceTranscription.title")}</h1>
           <p className={styles.description}>
             {t("voiceTranscription.description")}
           </p>
