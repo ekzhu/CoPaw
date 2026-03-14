@@ -118,7 +118,56 @@ def _media_type_from_path(path: str) -> str:
         ".wav": "audio/wav",
         ".mp3": "audio/mp3",
         ".opus": "audio/opus",
+        ".ogg": "audio/ogg",
+        ".flac": "audio/flac",
+        ".m4a": "audio/mp4",
+        ".aac": "audio/aac",
     }.get(ext, "audio/octet-stream")
+
+
+# Extensions accepted by the agentscope OpenAIChatFormatter
+_FORMATTER_SUPPORTED_AUDIO_EXTS = {".wav", ".mp3"}
+
+
+def _convert_audio_to_wav(src_path: str) -> Optional[str]:
+    """Convert an audio file to .wav using ffmpeg if the extension is not
+    natively supported by the LLM formatter.
+
+    Returns the path to the converted .wav file, or None if conversion
+    failed or was not needed.
+    """
+    ext = (os.path.splitext(src_path)[1] or "").lower()
+    if ext in _FORMATTER_SUPPORTED_AUDIO_EXTS:
+        return None  # already supported, no conversion needed
+
+    import subprocess
+    import shutil
+
+    if not shutil.which("ffmpeg"):
+        logger.warning(
+            "ffmpeg not found; cannot convert %s audio to wav. "
+            "Install ffmpeg to enable audio format conversion.",
+            ext,
+        )
+        return None
+
+    dst_path = os.path.splitext(src_path)[0] + ".wav"
+    try:
+        subprocess.run(
+            [
+                "ffmpeg", "-y", "-i", src_path,
+                "-ar", "16000", "-ac", "1",
+                dst_path,
+            ],
+            capture_output=True,
+            timeout=30,
+            check=True,
+        )
+        logger.debug("Converted audio %s -> %s", src_path, dst_path)
+        return dst_path
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+        logger.warning("Audio conversion failed for %s: %s", src_path, e)
+        return None
 
 
 def _update_block_with_local_path(
@@ -133,10 +182,14 @@ def _update_block_with_local_path(
             block["filename"] = os.path.basename(local_path)
     else:
         if block_type == "audio":
+            # Convert unsupported audio formats (e.g. ogg from Discord
+            # voice messages) to wav so the LLM formatter accepts them.
+            converted = _convert_audio_to_wav(local_path)
+            audio_path = converted or local_path
             block["source"] = {
                 "type": "url",
-                "url": Path(local_path).as_uri(),
-                "media_type": _media_type_from_path(local_path),
+                "url": Path(audio_path).as_uri(),
+                "media_type": _media_type_from_path(audio_path),
             }
         else:
             block["source"] = {
