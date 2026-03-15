@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# pylint: disable=redefined-outer-name,unused-argument,protected-access
 from __future__ import annotations
 
 from types import SimpleNamespace
@@ -30,8 +31,8 @@ class _AsyncIter:
     async def __anext__(self):
         try:
             return next(self._items)
-        except StopIteration:
-            raise StopAsyncIteration
+        except StopIteration as exc:
+            raise StopAsyncIteration from exc
 
 
 # -- check_connection --------------------------------------------------------
@@ -281,8 +282,8 @@ def test_normalize_models_strips_prefix_and_deduplicates() -> None:
 
 
 def test_normalize_models_empty_and_none() -> None:
-    assert GeminiProvider._normalize_models_payload(None) == []
-    assert GeminiProvider._normalize_models_payload([]) == []
+    assert not GeminiProvider._normalize_models_payload(None)
+    assert not GeminiProvider._normalize_models_payload([])
 
 
 def test_normalize_models_display_name_with_models_prefix() -> None:
