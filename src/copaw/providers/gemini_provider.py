@@ -24,9 +24,6 @@ class GeminiProvider(Provider):
         models: List[ModelInfo] = []
         for row in payload or []:
             model_id = str(getattr(row, "name", "") or "").strip()
-            display_name = str(
-                getattr(row, "display_name", "") or model_id,
-            ).strip()
 
             if not model_id:
                 continue
@@ -35,6 +32,10 @@ class GeminiProvider(Provider):
             # Strip the "models/" prefix for cleaner IDs
             if model_id.startswith("models/"):
                 model_id = model_id[len("models/") :]
+
+            display_name = str(
+                getattr(row, "display_name", "") or model_id,
+            ).strip()
 
             if not display_name or display_name.startswith("models/"):
                 display_name = model_id
