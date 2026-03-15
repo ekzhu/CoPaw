@@ -1,4 +1,4 @@
-export type Lang = "zh" | "en";
+export type Lang = "zh" | "en" | "ja" | "fr";
 
 export const i18n: Record<Lang, Record<string, string>> = {
   zh: {
@@ -263,6 +263,280 @@ export const i18n: Record<Lang, Record<string, string>> = {
     "docs.searchHint": "Enter a keyword and press Enter to search.",
     "releaseNotes.title": "Release Notes",
     "releaseNotes.noReleases": "No release notes available",
+  },
+  ja: {
+    "nav.docs": "ドキュメント",
+    "nav.more": "その他",
+    "nav.releaseNotes": "更新履歴",
+    "nav.download": "ダウンロード",
+    "nav.github": "GitHub",
+    "nav.githubComingSoon": "Coming Soon",
+    "nav.lang": "EN",
+    "nav.agentscopeTeam": "AgentScope",
+    "hero.slogan": "あなたを理解し、寄り添う",
+    "hero.sub":
+      "あなたのAIパーソナルアシスタント。簡単インストール、ローカルでもクラウドでもデプロイ可能。複数チャネル対応、機能拡張も容易。",
+    "hero.cta": "ドキュメントを見る",
+    "follow.title": "フォローする",
+    "follow.sub": "CoPaw の最新情報をいち早くお届けします",
+    "follow.xiaohongshu": "小紅書：",
+    "follow.x": "X：",
+    "brandstory.title": "Why CoPaw？",
+    "brandstory.para1":
+      "CoPaw は「あなたの相棒の小さな手（co-paw）」であり、Co Personal Agent Workstation（協働パーソナルエージェントワークステーション）を意味しています。",
+    "brandstory.para2":
+      "冷たいツールではなく、いつでも手を差し伸べてくれる温かい「小さな手」——デジタルライフの最高のパートナーでありたいと考えています。",
+    "features.title": "主な機能",
+    "features.channels.title": "あらゆるチャネル",
+    "features.channels.desc":
+      "DingTalk、Feishu、QQ、Discord、iMessage など——ひとつのアシスタントで必要に応じて接続。",
+    "features.private.title": "あなたの管理下に",
+    "features.private.desc":
+      "記憶とパーソナライズはあなたの管理下に。ローカルまたはクラウドにデプロイ。スケジュール通知やコラボレーションを任意のチャネルへ。",
+    "features.skills.title": "Skills",
+    "features.skills.desc":
+      "組み込みの Cron。ワークスペースにカスタムスキルを配置すれば自動ロード。",
+    "testimonials.title": "ユーザーの声",
+    "testimonials.viewAll": "すべて見る",
+    "testimonials.1":
+      "パーソナルアシスタントはこうあるべき：ひとつの入口、すべてのチャネル。",
+    "testimonials.2":
+      "Cron とハートビートがとても実用的。スキルも自分で追加でき、データはローカルに保持。",
+    "testimonials.3": "完全な管理を求めるチームに最適。",
+    "usecases.title": "CoPaw でできること",
+    "usecases.sub": "",
+    "usecases.category.social": "ソーシャルメディア",
+    "usecases.category.creative": "クリエイティブ＆構築",
+    "usecases.category.productivity": "生産性",
+    "usecases.category.research": "リサーチ＆学習",
+    "usecases.category.assistant": "デスクトップ＆ファイル",
+    "usecases.category.explore": "さらに探索",
+    "usecases.social.1":
+      "小紅書、知乎、Reddit の注目投稿を毎日ダイジェストにまとめ、フィードバックに基づいておすすめを改善。",
+    "usecases.social.2":
+      "Bilibili や YouTube のチャンネルやキーワードの新着動画を毎日要約し、閲覧時間を節約。",
+    "usecases.social.3":
+      "小紅書や知乎のアカウントを分析してコンテンツパターンを発見し、次の投稿の参考に。",
+    "usecases.creative.1":
+      "就寝前に CoPaw に目標を伝えて自動実行を設定すれば、翌日には動作するドラフトが完成。",
+    "usecases.creative.2":
+      "テーマ選定から素材収集、方向性の決定まで、CoPaw が動画コンテンツ制作のワークフロー全体をサポート。",
+    "usecases.productivity.1":
+      "ニュースレターや重要なメールの毎日のダイジェストを DingTalk、Feishu、QQ チャットに配信。",
+    "usecases.productivity.2":
+      "メールやカレンダーから連絡先を抽出し、自然言語で人物や過去のやり取りを検索。",
+    "usecases.productivity.3":
+      "食事や症状を記録し、CoPaw が分析して傾向を可視化。",
+    "usecases.research.1":
+      "テック企業や AI 企業の決算や重要ニュースを自動追跡し、要点と要約を自動生成。",
+    "usecases.research.2":
+      "リンク、記事、投稿を個人ナレッジベースに保存し、ワークフロー全体で再利用。",
+    "usecases.assistant.1":
+      "ローカルファイルの整理・検索、ドキュメントの閲覧・要約を支援。DingTalk、Feishu、QQ でリクエストしたファイルを現在のチャットに送信。",
+    "usecases.explore.1":
+      "さらなる可能性を探索——Skills と Cron を組み合わせて独自の agentic アプリを作成。",
+    "quickstart.title": "クイックスタート",
+    "quickstart.serviceNotice":
+      "数分で専用AIアシスタントを取得。コマンドひとつ、またはアプリをダブルクリックするだけで簡単セットアップ。",
+    "quickstart.hintBefore":
+      "インストール → 初期化 → 起動。チャネル設定については ",
+    "quickstart.hintLink": "ドキュメント",
+    "quickstart.hintAfter":
+      " をご覧ください。DingTalk、Feishu、QQ などのチャネルで CoPaw を使用できます。",
+    "quickstart.method.pip": "pip",
+    "quickstart.method.script": "スクリプト",
+    "quickstart.method.docker": "Docker",
+    "quickstart.method.cloud": "クラウド",
+    "quickstart.method.desktop": "デスクトップ",
+    "quickstart.desc.pip": "Python 環境を自分で管理したい方向け",
+    "quickstart.desc.script":
+      "Python のセットアップ不要、コマンドひとつですべてインストール。スクリプトが uv（Python パッケージマネージャー）のダウンロード、仮想環境の作成、CoPaw と依存関係（Node.js やフロントエンドアセットを含む）のインストールを自動実行します。注意：制限されたネットワーク環境や企業ファイアウォール下では動作しない場合があります。",
+    "quickstart.desc.docker":
+      "公式 Docker イメージによる迅速なデプロイ、隔離環境で管理が容易",
+    "quickstart.desc.cloud":
+      "ワンクリッククラウドデプロイまたはオンライン実行、ローカル環境の設定不要",
+    "quickstart.desc.desktop":
+      "Python 環境、すべての依存関係、フロントエンドアセットを同梱したスタンドアロンデスクトップアプリ。ダブルクリックで起動、コマンドライン不要、前提条件なし。",
+    "quickstart.platform.mac": "macOS / Linux",
+    "quickstart.platform.windows": "Windows",
+    "quickstart.shell.cmd": "CMD",
+    "quickstart.shell.ps": "PowerShell",
+    "quickstart.docker.hub": "Docker Hub",
+    "quickstart.cloud.aliyun": "Aliyun",
+    "quickstart.cloud.modelscope": "ModelScope",
+    "quickstart.cloud.aliyunDeploy": "Aliyun ECS にデプロイ",
+    "quickstart.cloud.aliyunDoc": "ドキュメントを見る",
+    "quickstart.cloud.modelscopeGo": "ModelScope Studio へ",
+    "quickstart.desktop.platforms": "対応プラットフォーム",
+    "quickstart.desktop.downloadGithub": "GitHub からダウンロード",
+    "quickstart.desktop.viewGuide": "ユーザーガイドを見る",
+    "quickstart.desktop.recommended": "おすすめ",
+    "quickstart.badgeBeta": "Beta",
+    footer: "CoPaw — あなたを理解し、寄り添う",
+    "footer.poweredBy.p1": "",
+    "footer.poweredBy.p2": " が ",
+    "footer.poweredBy.p3": "、",
+    "footer.poweredBy.p3b": "、および ",
+    "footer.poweredBy.p4": " で構築。",
+    "footer.poweredBy.team": "AgentScope チーム",
+    "footer.poweredBy.agentscope": "AgentScope",
+    "footer.poweredBy.runtime": "AgentScope Runtime",
+    "footer.poweredBy.reme": "ReMe",
+    "footer.inspiredBy": "一部のインスピレーション：",
+    "footer.inspiredBy.name": "OpenClaw",
+    "footer.thanksSkills": "",
+    "footer.thanksSkills.name": "anthropics/skills",
+    "footer.thanksSkills.suffix":
+      " が Agent Skills の仕様とサンプルを提供してくれたことに感謝します。",
+    "docs.backToTop": "トップに戻る",
+    "docs.copy": "コピー",
+    "docs.copied": "コピー済み",
+    "docs.searchPlaceholder": "ドキュメントを検索",
+    "docs.searchLoading": "読み込み中…",
+    "docs.searchNoResults": "結果なし",
+    "docs.searchResultsTitle": "検索結果",
+    "docs.searchResultsTitleEmpty": "ドキュメントを検索",
+    "docs.searchHint": "左側にキーワードを入力して Enter で検索。",
+    "releaseNotes.title": "更新履歴",
+    "releaseNotes.noReleases": "更新履歴はまだありません",
+  },
+  fr: {
+    "nav.docs": "Documentation",
+    "nav.more": "Plus",
+    "nav.releaseNotes": "Notes de version",
+    "nav.download": "Télécharger",
+    "nav.github": "GitHub",
+    "nav.githubComingSoon": "Coming Soon",
+    "nav.lang": "EN",
+    "nav.agentscopeTeam": "AgentScope",
+    "hero.slogan": "Il vous comprend, il vous accompagne",
+    "hero.sub":
+      "Votre assistant personnel IA ; installation simple, déploiement local ou cloud ; prise en charge de plusieurs canaux de communication avec des capacités facilement extensibles.",
+    "hero.cta": "Lire la documentation",
+    "follow.title": "Suivez-nous",
+    "follow.sub": "Suivez-nous pour les dernières actualités de CoPaw",
+    "follow.xiaohongshu": "Xiaohongshu :",
+    "follow.x": "X :",
+    "brandstory.title": "Why CoPaw ?",
+    "brandstory.para1":
+      "CoPaw représente à la fois un Co Personal Agent Workstation et un « co-paw » — un partenaire toujours à vos côtés.",
+    "brandstory.para2":
+      "Plus qu'un simple outil froid, CoPaw est une « petite patte » chaleureuse, toujours prête à vous donner un coup de main (ou de patte !). C'est le compagnon idéal de votre vie numérique.",
+    "features.title": "Fonctionnalités clés",
+    "features.channels.title": "Tous les canaux",
+    "features.channels.desc":
+      "DingTalk, Feishu, QQ, Discord, iMessage et plus — un seul assistant, connectez selon vos besoins.",
+    "features.private.title": "Sous votre contrôle",
+    "features.private.desc":
+      "Mémoire et personnalisation sous votre contrôle. Déployez localement ou dans le cloud ; rappels programmés et collaboration vers n'importe quel canal.",
+    "features.skills.title": "Skills",
+    "features.skills.desc":
+      "Cron intégré ; compétences personnalisées dans votre espace de travail, chargées automatiquement.",
+    "testimonials.title": "Ce qu'en disent les utilisateurs",
+    "testimonials.viewAll": "Tout voir",
+    "testimonials.1":
+      "C'est ce qu'un assistant personnel devrait être : une seule entrée, tous les canaux.",
+    "testimonials.2":
+      "Le Cron et le heartbeat sont très pratiques. Ajoutez vos propres compétences ; les données restent en local.",
+    "testimonials.3":
+      "Les équipes qui veulent un contrôle total l'adorent.",
+    "usecases.title": "Ce que vous pouvez faire avec CoPaw",
+    "usecases.sub": "",
+    "usecases.category.social": "Réseaux sociaux",
+    "usecases.category.creative": "Création et développement",
+    "usecases.category.productivity": "Productivité",
+    "usecases.category.research": "Recherche et apprentissage",
+    "usecases.category.assistant": "Bureau et fichiers",
+    "usecases.category.explore": "Explorer davantage",
+    "usecases.social.1":
+      "Résumé quotidien des publications tendance de Xiaohongshu, Zhihu et Reddit selon vos centres d'intérêt, avec des recommandations qui s'améliorent au fil du temps.",
+    "usecases.social.2":
+      "Résumés quotidiens des nouvelles vidéos de Bilibili ou YouTube par chaîne ou mot-clé, pour vous faire gagner du temps.",
+    "usecases.social.3":
+      "Analysez vos comptes Xiaohongshu ou Zhihu pour découvrir des tendances de contenu et orienter vos prochaines publications.",
+    "usecases.creative.1":
+      "Décrivez votre objectif à CoPaw et programmez une exécution nocturne ; obtenez un brouillon fonctionnel le lendemain.",
+    "usecases.creative.2":
+      "Du choix du sujet à la collecte de matériaux en passant par la définition de la direction, CoPaw accompagne l'ensemble du flux de création vidéo.",
+    "usecases.productivity.1":
+      "Résumés quotidiens des newsletters et e-mails importants, envoyés dans votre conversation DingTalk, Feishu ou QQ.",
+    "usecases.productivity.2":
+      "Contacts extraits des e-mails et du calendrier, avec recherche en langage naturel des personnes et des interactions passées.",
+    "usecases.productivity.3":
+      "Enregistrez votre alimentation et vos symptômes ; CoPaw analyse et met en évidence les tendances au fil du temps.",
+    "usecases.research.1":
+      "Suivez les résultats financiers et les actualités des entreprises technologiques et IA ; obtenez automatiquement les points clés et les résumés.",
+    "usecases.research.2":
+      "Enregistrez des liens, articles et publications dans une base de connaissances personnelle et réutilisez-les dans vos différents flux de travail.",
+    "usecases.assistant.1":
+      "Organisez et recherchez des fichiers locaux, lisez et résumez des documents ; demandez des fichiers dans DingTalk, Feishu ou QQ et recevez-les dans la conversation en cours.",
+    "usecases.explore.1":
+      "Explorez davantage de possibilités — combinez Skills et Cron pour créer votre propre application agentique.",
+    "quickstart.title": "Démarrage rapide",
+    "quickstart.serviceNotice":
+      "Votre assistant IA personnel en quelques minutes. Une commande ou un double-clic sur l'application — faites-le vous-même, simplement.",
+    "quickstart.hintBefore":
+      "Installer → initialiser → démarrer. Configurez les canaux pour utiliser CoPaw sur DingTalk, Feishu, QQ, etc. Consultez la ",
+    "quickstart.hintLink": "documentation",
+    "quickstart.hintAfter": ".",
+    "quickstart.method.pip": "pip",
+    "quickstart.method.script": "Script",
+    "quickstart.method.docker": "Docker",
+    "quickstart.method.cloud": "Cloud",
+    "quickstart.method.desktop": "Bureau",
+    "quickstart.desc.pip":
+      "Si vous préférez gérer Python vous-même",
+    "quickstart.desc.script":
+      "Aucune configuration Python requise, une seule commande installe tout. Le script téléchargera automatiquement uv (gestionnaire de paquets Python), créera un environnement virtuel et installera CoPaw avec toutes ses dépendances (y compris Node.js et les ressources frontend). Note : peut ne pas fonctionner dans les environnements réseau restreints ou derrière des pare-feu d'entreprise.",
+    "quickstart.desc.docker":
+      "Déploiement rapide avec les images Docker officielles, environnement isolé et gestion facile",
+    "quickstart.desc.cloud":
+      "Déploiement cloud en un clic ou exécution en ligne, aucune configuration locale requise",
+    "quickstart.desc.desktop":
+      "Application de bureau autonome avec environnement Python intégré, toutes les dépendances et les ressources frontend. Double-cliquez pour lancer, sans ligne de commande, sans prérequis.",
+    "quickstart.platform.mac": "macOS / Linux",
+    "quickstart.platform.windows": "Windows",
+    "quickstart.shell.cmd": "CMD",
+    "quickstart.shell.ps": "PowerShell",
+    "quickstart.docker.hub": "Docker Hub",
+    "quickstart.cloud.aliyun": "Aliyun",
+    "quickstart.cloud.modelscope": "ModelScope",
+    "quickstart.cloud.aliyunDeploy": "Déployer sur Aliyun ECS",
+    "quickstart.cloud.aliyunDoc": "Voir la documentation",
+    "quickstart.cloud.modelscopeGo": "Accéder à ModelScope Studio",
+    "quickstart.desktop.platforms": "Plateformes prises en charge",
+    "quickstart.desktop.downloadGithub": "Télécharger depuis GitHub",
+    "quickstart.desktop.viewGuide": "Voir le guide d'utilisation",
+    "quickstart.desktop.recommended": "recommandé",
+    "quickstart.badgeBeta": "Beta",
+    footer: "CoPaw — Il vous comprend, il vous accompagne",
+    "footer.poweredBy.p1": "Créé par ",
+    "footer.poweredBy.p2": " avec ",
+    "footer.poweredBy.p3": ", ",
+    "footer.poweredBy.p3b": " et ",
+    "footer.poweredBy.p4": ".",
+    "footer.poweredBy.team": "l'équipe AgentScope",
+    "footer.poweredBy.agentscope": "AgentScope",
+    "footer.poweredBy.runtime": "AgentScope Runtime",
+    "footer.poweredBy.reme": "ReMe",
+    "footer.inspiredBy": "Partiellement inspiré par ",
+    "footer.inspiredBy.name": "OpenClaw",
+    "footer.thanksSkills": "Merci à ",
+    "footer.thanksSkills.name": "anthropics/skills",
+    "footer.thanksSkills.suffix":
+      " pour les spécifications et exemples d'Agent Skills.",
+    "docs.backToTop": "Retour en haut",
+    "docs.copy": "Copier",
+    "docs.copied": "Copié",
+    "docs.searchPlaceholder": "Rechercher dans la documentation",
+    "docs.searchLoading": "Chargement…",
+    "docs.searchNoResults": "Aucun résultat",
+    "docs.searchResultsTitle": "Résultats de la recherche",
+    "docs.searchResultsTitleEmpty": "Rechercher dans la documentation",
+    "docs.searchHint":
+      "Saisissez un mot-clé et appuyez sur Entrée pour rechercher.",
+    "releaseNotes.title": "Notes de version",
+    "releaseNotes.noReleases": "Aucune note de version disponible",
   },
 };
 

@@ -37,7 +37,7 @@ Cloud providers (including ModelScope, DashScope, Aliyun Coding Plan, OpenAI, Az
 
 ## Google Gemini provider
 
-The Google Gemini provider uses Google's native Gemini API (via the `google-genai` SDK) to access Gemini models such as Gemini 2.5 Pro and Gemini 2.5 Flash.
+The Google Gemini provider uses Google's native Gemini API (via the `google-genai` SDK) to access Gemini models. Pre-configured models include Gemini 3.1 Pro, Gemini 3 Flash, Gemini 3.1 Flash Lite, Gemini 2.5 Pro, Gemini 2.5 Flash, Gemini 2.5 Flash Lite, and Gemini 2.0 Flash. Additional models can be auto-discovered from the API.
 
 **Prerequisites:**
 
@@ -61,7 +61,7 @@ copaw models config-key gemini
 copaw models set-llm
 ```
 
-> **Tip:** Gemini models with thinking capabilities (e.g. Gemini 2.5 Pro, Gemini 2.5 Flash) support extended reasoning. CoPaw automatically handles thinking blocks and thought signatures from these models.
+> **Tip:** Gemini models with thinking capabilities (e.g. Gemini 3.1 Pro, Gemini 2.5 Pro, Gemini 2.5 Flash) support extended reasoning. CoPaw automatically handles thinking blocks and thought signatures from these models.
 
 ## Local providers (llama.cpp / MLX)
 

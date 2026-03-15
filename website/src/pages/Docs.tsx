@@ -270,6 +270,46 @@ const DOC_TITLES: Record<Lang, Record<string, string>> = {
     "docs.contributing": "Open source & contribution",
     "docs.roadmap": "Roadmap",
   },
+  ja: {
+    "docs.intro": "はじめに",
+    "docs.quickstart": "クイックスタート",
+    "docs.desktop": "デスクトップアプリ",
+    "docs.console": "コンソール",
+    "docs.models": "モデル",
+    "docs.channels": "チャネル",
+    "docs.heartbeat": "ハートビート",
+    "docs.cli": "CLI",
+    "docs.skills": "Skills",
+    "docs.mcp": "MCP",
+    "docs.memory": "メモリ",
+    "docs.context": "コンテキスト",
+    "docs.config": "設定と作業ディレクトリ",
+    "docs.commands": "マジックコマンド",
+    "docs.faq": "FAQ",
+    "docs.community": "バグ報告とコミュニティ",
+    "docs.contributing": "オープンソースと貢献",
+    "docs.roadmap": "ロードマップ",
+  },
+  fr: {
+    "docs.intro": "Introduction",
+    "docs.quickstart": "Démarrage rapide",
+    "docs.desktop": "Application de bureau",
+    "docs.console": "Console",
+    "docs.models": "Modèles",
+    "docs.channels": "Canaux",
+    "docs.heartbeat": "Heartbeat",
+    "docs.cli": "CLI",
+    "docs.skills": "Skills",
+    "docs.mcp": "MCP",
+    "docs.memory": "Mémoire",
+    "docs.context": "Contexte",
+    "docs.config": "Configuration et répertoire de travail",
+    "docs.commands": "Commandes magiques",
+    "docs.faq": "FAQ",
+    "docs.community": "Rapports de bugs et communauté",
+    "docs.contributing": "Open source et contribution",
+    "docs.roadmap": "Feuille de route",
+  },
 };
 
 interface DocsProps {
@@ -343,7 +383,7 @@ export function Docs({ config, lang, onLangClick }: DocsProps) {
     }
     setContent("");
     let cancelled = false;
-    const langSuffix = lang === "zh" ? "zh" : "en";
+    const langSuffix = (["zh", "ja", "fr"] as const).includes(lang as any) ? lang : "en";
     const base = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "") || "";
     const url = `${base}/docs/${activeSlug}.${langSuffix}.md`;
     fetch(url)
