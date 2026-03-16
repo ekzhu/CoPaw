@@ -17,7 +17,7 @@ from copaw.providers.provider import ModelInfo, Provider
 class GeminiProvider(Provider):
     """Provider implementation for Google Gemini API."""
 
-    def _client(self, timeout: float = 5) -> Any:
+    def _client(self, timeout: float = 10) -> Any:
         return genai.Client(
             api_key=self.api_key,
             http_options=genai_types.HttpOptions(timeout=int(timeout * 1000)),
@@ -55,7 +55,7 @@ class GeminiProvider(Provider):
             deduped.append(model)
         return deduped
 
-    async def check_connection(self, timeout: float = 5) -> tuple[bool, str]:
+    async def check_connection(self, timeout: float = 10) -> tuple[bool, str]:
         """Check if Google Gemini provider is reachable."""
         try:
             client = self._client(timeout=timeout)
@@ -75,7 +75,7 @@ class GeminiProvider(Provider):
                 "Unknown exception when connecting to Google Gemini API.",
             )
 
-    async def fetch_models(self, timeout: float = 5) -> List[ModelInfo]:
+    async def fetch_models(self, timeout: float = 10) -> List[ModelInfo]:
         """Fetch available models from Gemini API."""
         try:
             client = self._client(timeout=timeout)
@@ -92,7 +92,7 @@ class GeminiProvider(Provider):
     async def check_model_connection(
         self,
         model_id: str,
-        timeout: float = 5,
+        timeout: float = 10,
     ) -> tuple[bool, str]:
         """Check if a specific Gemini model is reachable/usable."""
         target = (model_id or "").strip()
