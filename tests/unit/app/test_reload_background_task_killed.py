@@ -47,6 +47,9 @@ import pytest
 def _import_module_directly(module_name: str, file_path: str) -> ModuleType:
     """Import a single module file without triggering package __init__.py."""
     spec = importlib.util.spec_from_file_location(module_name, file_path)
+    assert (
+        spec is not None and spec.loader is not None
+    ), f"Failed to create module spec for {file_path}"
     mod = importlib.util.module_from_spec(spec)
     sys.modules[module_name] = mod
     spec.loader.exec_module(mod)
